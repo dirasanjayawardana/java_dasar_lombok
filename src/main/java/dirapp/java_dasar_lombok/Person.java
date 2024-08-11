@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
+// import lombok.Singular;
 
 @Data
 @Builder
@@ -20,6 +20,6 @@ public class Person {
 
   private Integer age;
 
-  @Singular
+  // @Singular
   private List<String> hobbies;
 }

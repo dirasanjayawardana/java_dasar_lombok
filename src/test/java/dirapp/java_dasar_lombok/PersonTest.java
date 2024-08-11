@@ -37,13 +37,19 @@ public class PersonTest {
 
   @Test
   void createViaBuilder() {
+    List<String> hobbies = new ArrayList<>();
+    hobbies.add("Game");
+    hobbies.add("Read");
+    hobbies.add("Traveling");
+
     Person person = Person.builder()
         .id("id")
         .name("name")
         .age(30)
-        .hobby("Game")
-        .hobby("Read")
-        .hobby("Traveling")
+        .hobbies(hobbies)
+        // .hobby("Game")
+        // .hobby("Read")
+        // .hobby("Traveling")
         .build();
 
     System.out.println(person);
