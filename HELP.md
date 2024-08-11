@@ -24,6 +24,22 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - Secara otmatis ini akan membandingkan semua field didalam class, dan akan membuatkan hashCode method.
 - Jika ingin memanggil super class methodnya, perlu mengubah method `callSuper()` menjadi true di annotationnya.
 
+## Data
+- `@Data` digunakan untuk mempersingkat penulisan gabungan dari annotasi `@Getter`, `@Setter`, `@RequiredArgsConstructor`, `@ToString`, dan `@EqualsAndHashCode`.
+- Meskipun sudah menggunakan `@Data`, tetap bisa menambahkan annotasi `@Getter`, `@Setter`, dll.
+
+## Builder
+- Lombok memiliki fitur untuk melakukan auto generate class Builder untuk membuat object yang kompleks.
+- Dengan menggunakan `@Builder`, secara otomatis lombok akan membuat static method `builder()` untuk membuat builder objectnya, dan `build()` untuk membuat objectnya
+- Cara membuat objectnya cukup dengan  `ClassNya.builder().field1(isiFieldnya).field2(isiFieldnya).build();`
+- Cara membuat objectnya jika classnya memiliki tipe generic `ClassNya.<TipeGenericNya>builder().field1(isiFieldnya).field2(isiFieldnya).build();`
+
+## Singular
+- Lombok memiliki fitur untuk memasukkan data singular ke dalam Collection.
+- Dengan `@Singular` Lombok akan membuat builder method untuk menambahkan data ke Collection (List, Set, Map) satu per satu.
+- Nama method otomatis bentuk singular dari nama field collection nya, contohnya pada field `hobbies` maka nama method buildernya adalah `hobby()`
+- Untuk menghapus data yang sudah di masukkan, gunakan method `clearNamaMethod()`.
+
 ## Learning
 - main/Customer.java
 - test/CustomerTest.java
@@ -32,3 +48,6 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - main/Merchant.java
 - main/Employee.java
 - main/Manager.java
+- main/Product.java
+- main/Person.java
+- test/PersonTest.java
