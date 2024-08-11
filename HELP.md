@@ -1,16 +1,34 @@
-# Getting Started
+# Lombok
+Merupakan sebuah library untuk melakukan generate code java secara otomatis, seperti getter setter, equals method, toString, dll.
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Getter Setter
+- Lombok bisa membuat getter setter otomatis dengan menggunakan annotasi `@Getter` dan `@Setter`.
+- Jika ditempatkan pada field, secara otomatis akan membuat getter setter untuk field.
+- Jika ditempatkan pada class, maka semua field yang tidak statis yang ada di dalam class akan otomatis dibuatkan getter atau setternya.
+- Secara default visibility nya adalah public, jika ingin diubah, menggunakan method `value=AccessLevel.LEVELNYA`
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.2/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.2/maven-plugin/build-image.html)
+## Constructor
+- `@NoArgsConstructor` (membuat constructor tanpa parameter)
+- `@NoArgsConstructor` (membuat constructor dengan semua parameter yang diambil dari fieldnya, urutan parameternya yang dibuat sesuai dengan urutan fielnya)
+- `@RequiredArgsConstructor` (membuat constructor untuk beberapa parameter saja diambil dari fieldnya yang final)
+- Untuk membuat object dengan static method, bisa menambahkan method `staticName=namaMethodnya` pada annotationnya, secara otomatis constructornya akan menjadi private, sehingga harus mnggunakan static method untuk membuat object.
 
-### Maven Parent overrides
+## ToString
+- Lombok bisa digunakan untuk membuat method toString dengan menggunakan annotation `@ToString`.
+- Secara otomatis akan membuat method toString() yang berisikan informasi semua field yang ada didalam class.
+- Jika tidak ingin menampilkan beberapa field, gunakan method `exclude={namaFieldnya}`
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+## Equals dan HashCode
+- Seperti biasa, kedua kethod equals() dan hashCode() selalu diimplementasikan berbarengan.
+- Untuk membuat equals dan hashCode secara otomatis, bisa gunakan annotation `@EqualsAndHashMethod`.
+- Secara otmatis ini akan membandingkan semua field didalam class, dan akan membuatkan hashCode method.
+- Jika ingin memanggil super class methodnya, perlu mengubah method `callSuper()` menjadi true di annotationnya.
 
+## Learning
+- main/Customer.java
+- test/CustomerTest.java
+- main/Login.java
+- test/LoginTest.java
+- main/Merchant.java
+- main/Employee.java
+- main/Manager.java
