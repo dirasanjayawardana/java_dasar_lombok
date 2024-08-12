@@ -44,6 +44,38 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - jika `@NonNull` ditempatkan di field, maka secara otomatis akan digenerate di `@RequiredArgsConstructor`, sekaligus dilakukan pengecekan tidak boleh null.
 - jika `@NonNull` ditempatkan di parameter, maka parameter tersebut akan dilakukan pengecekan null, jika ternyata null, akan throw NullPointerException.
 
+## Value
+- `@Value` digunakan untuk membuat immutable class.
+- Mirip seperti `@Data` bedanya  classnya akan menjadi final class, semua field nya akan immutable, dan tidak ada setternya.
+
+## With
+- `@With` digunakan untuk membuat class baru dengan memodifikasi salah satu field yang sudah ada.
+- Jika ditempatkan di field, maka secara otomatis membuat method dengan nama `withNamaField`.
+- Jika ditempatkan di class, maka secara otomatis membuat method `withNamaField` untuk semua field.
+
+## Cleanup
+- Saat membuat object resource di java yang perlu close (contohnya koneksi ke database), biasanya menggunakan try-catch-finally, dengan melakukan close connection di finally.
+- `@Cleanup` digunakan untuk membuat auto generate close resource.
+
+## Sneaky Throws
+- Secara default ketika membuat code yang memiliki checked exception, perlu menangkapnya dalam try-catch.
+- Lombok bisa mengubah checked exception menjadi runtime exception, tanpa mengubah exception itu sendiri.
+- Lombok hanya mengakali agar compiler java tidak komplen ketika tidak menangkap checked exception.
+- Menggunakan annotasi `@SneakyThrows`.
+
+## Log
+- Lombok mendukung pembuatan field Logger log secara otomatis, dengan beberapa cara sesuai dengan library log yang digunakan.
+- `@Log` untuk Java Logging.
+- `@Slf4j` untuk SLF4J.
+- `@CommonsLog` untuk apache commons log.
+- `@Flogger` untuk google flogger.
+- `@Log4J` untuk Log4J.
+- `@JbossLog` untuk JBoss Log.
+
+## Synchronized
+- Lombok memiliki fitur untuk mempermudah membuat Lock agar method yang dibuat aman dari race condition.
+- Dengan menggunakan `@Synchronized` dan jika ingin sharing lock dengan beberapa method bisa gunakan `value="valueLockNya"` yang sama.
+
 ## Learning
 - main/Customer.java
 - test/CustomerTest.java
@@ -56,3 +88,7 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - main/Person.java
 - test/PersonTest.java
 - main/Member.java
+- main/Register.java
+- test/RegisterTest.java
+- main/FileHelper.java
+- test/FileHelperTest.java
