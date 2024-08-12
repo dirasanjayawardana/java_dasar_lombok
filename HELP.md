@@ -40,6 +40,10 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - Nama method otomatis bentuk singular dari nama field collection nya, contohnya pada field `hobbies` maka nama method buildernya adalah `hobby()`
 - Untuk menghapus data yang sudah di masukkan, gunakan method `clearNamaMethod()`.
 
+## NonNull
+- jika `@NonNull` ditempatkan di field, maka secara otomatis akan digenerate di `@RequiredArgsConstructor`, sekaligus dilakukan pengecekan tidak boleh null.
+- jika `@NonNull` ditempatkan di parameter, maka parameter tersebut akan dilakukan pengecekan null, jika ternyata null, akan throw NullPointerException.
+
 ## Learning
 - main/Customer.java
 - test/CustomerTest.java
@@ -51,3 +55,4 @@ Merupakan sebuah library untuk melakukan generate code java secara otomatis, sep
 - main/Product.java
 - main/Person.java
 - test/PersonTest.java
+- main/Member.java
